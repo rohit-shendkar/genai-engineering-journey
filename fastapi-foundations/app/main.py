@@ -1,7 +1,10 @@
 from fastapi import FastAPI
+from app.routers import health
 
-app = FastAPI()
+app = FastAPI(
+    title="FastAPI Foundations",
+    description="A foundational FastAPI application with health check endpoint.",
+    version="1.0.0",
+)
 
-@app.get("/")
-def health_check():
-    return {"status": "ok"}
+app.include_router(health.router)
